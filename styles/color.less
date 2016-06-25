@@ -1,0 +1,61 @@
+/*
+  COLORS
+____________________________________________________________________
+*/
+
+/* Rainbow */
+@red: rgb(255,150,150);
+@orange: rgb(250,150,100);
+@yellow: rgb(200,200,100);
+@green: rgb(100,200,100);
+@cyan: rgb(100,200,200);
+@blue: rgba(150,200,255,0.8);
+@purple: rgba(220,120,255,0.5);
+@pink: rgb(255,120,220);
+
+/* Lights */
+@light: rgb(180,180,180);
+@soft: rgb(128,128,138);
+@dark: rgb(20,20,25);
+
+/*
+  ATOM COLORS
+____________________________________________________________________
+*/
+
+@syntax-text: @light;
+@syntax-cursor: @yellow;
+@syntax-background: @dark;
+@syntax-selection: @soft;
+
+// Syntax: variations
+@syntax-important: @red;
+@syntax-highlighted: @yellow;
+@syntax-significant: @orange;
+@syntax-uncommon: @pink;
+@syntax-common: @blue;
+@syntax-basic: @cyan;
+@syntax-lowlighted: @green;
+@syntax-unsignificant: @purple;
+@syntax-discreet: lighten(@syntax-background,20%);
+
+// Find and replace
+@result-highlight: @syntax-highlighted;
+@result-selected: @syntax-selection;
+
+// Git
+@git-renamed:@syntax-unsignificant;
+@git-added:@syntax-lowlighted;
+@git-modified:@syntax-significant;
+@git-removed:@syntax-important;
+
+// Guide
+@guide-wrap:lighten(@syntax-background,5%);
+@guide-indent: @guide-wrap;
+@guide-invisible: @syntax-background;
+
+// Gutter
+@gutter-text:@syntax-discreet;
+@gutter-background:@syntax-background;
+@gutter-text-selected:@syntax-text;
+@gutter-background-selected:lighten(@gutter-background,5%);

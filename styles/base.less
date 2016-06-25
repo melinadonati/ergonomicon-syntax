@@ -1,0 +1,285 @@
+@import (reference) "color.less";
+/*
+  FONT
+____________________________________________________________________
+*/
+.font-face(@family, @file, @weight: normal, @style: normal) {
+  @font-face {
+      font-family: @family;
+      font-style: @style;
+      font-weight: @weight;
+      src: url("atom://ergonomicon-syntax/fonts/@{file}.woff2") format("woff2"),
+           url("atom://ergonomicon-syntax/fonts/@{file}.woff") format("woff"),
+           url("atom://ergonomicon-syntax/fonts/@{file}.ttf") format("truetype");
+  }
+}
+
+.font-face('Fira Code', FiraCode-Light, 100);
+.font-face('Fira Code', FiraCode-Regular, 400);
+.font-face('Fira Code', FiraCode-Medium, 500);
+.font-face('Fira Code', FiraCode-Bold, 700);
+
+@syntax-family: 'Fira Code', Consolas, monospace !important;
+
+/*
+  EDITOR
+____________________________________________________________________
+*/
+atom-text-editor, :host {
+  font-family: @syntax-family;
+  color: @syntax-text;
+  background-color: @syntax-background;
+
+  .cursor {
+    color: @syntax-cursor;
+  }
+  .invisible {
+    color: @syntax-text;
+  }
+}
+
+atom-text-editor[mini] .scroll-view,
+:host([mini]) .scroll-view {
+  padding-left: 1px;
+}
+
+/* Active tab */
+.tab-bar .tab.active[data-type$="Editor"],
+.tab-bar .tab.active[data-type$="Editor"] .title,
+.tab-bar .tab.active[data-type="MarkdownPreviewView"],
+.tab-bar .tab.active[data-type="MarkdownPreviewView"] .title {
+  color: @syntax-text !important;
+  background-color: @syntax-background !important;
+}
+
+.tab-bar .tab.active[data-type$="Editor"]:after,
+.tab-bar .tab.active[data-type="MarkdownPreviewView"]:after {
+  border-bottom-color: @syntax-background !important;
+}
+
+/* Scrollbar */
+.scrollbars-visible-always atom-text-editor /deep/ ::-webkit-scrollbar-corner,
+.scrollbars-visible-always atom-text-editor /deep/ ::-webkit-scrollbar-track {
+  background-color: @syntax-background !important;
+}
+.scrollbars-visible-always atom-text-editor /deep/ ::-webkit-scrollbar-thumb {
+  border-color: @syntax-background !important;
+}
+
+/*
+  GUIDE
+____________________________________________________________________
+*/
+
+atom-text-editor, :host {
+  &::shadow .wrap-guide,
+  .wrap-guide {
+    background-color: @guide-wrap;
+  }
+  .indent-guide {
+    color: @guide-indent;
+  }
+  .invisible-character {
+    color: @guide-invisible;
+  }
+}
+
+/*
+  GUTTER
+____________________________________________________________________
+*/
+
+atom-text-editor, :host {
+  .gutter {
+    color: @gutter-text;
+    background-color: @gutter-background;
+
+    .line-number {
+      &:after,
+      &.folded {
+        color:;
+      }
+      &.cursor-line {
+        color: @gutter-text-selected;
+        background-color: @gutter-background-selected;
+      }
+
+      &.cursor-line-no-selection {
+        color: @gutter-text-selected;
+      }
+    }
+  }
+}
+
+/*
+  SELECTION
+____________________________________________________________________
+*/
+
+atom-text-editor, :host {
+  .selection .region {
+    background-color: @syntax-selection;
+  }
+  .search-results .marker {
+    .region {
+      background-color: @syntax-selection;
+    }
+    &.current-result .region {
+      color: @syntax-highlighted;
+      border: 1px solid @syntax-highlighted;
+    }
+  }
+}
+
+/*
+  TYPOGRAPHY
+____________________________________________________________________
+*/
+atom-text-editor {
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  text-rendering: optimizeLegibility;
+}
+atom-text-editor::shadow .string.quoted,
+atom-text-editor::shadow .string.regexp {
+  -webkit-font-feature-settings: "liga" off, "calt" off;
+}
+.source.gfm .markup {
+  -webkit-font-smoothing: auto;
+}
+
+/*
+  CORE
+____________________________________________________________________
+*/
+
+.none {
+  color: @syntax-text;
+}
+.punctuation {
+  color: inherit !important;
+}
+.comment {
+  color: @syntax-discreet;
+}
+.keyword {
+  color: @syntax-important;
+}
+.constant {
+  color: @syntax-significant;
+}
+.variable {
+  color: @syntax-common;
+}
+.string {
+  color: @syntax-unsignificant;
+  font-weight: 100;
+}
+.storage {
+  color: @syntax-uncommon;
+}
+.illegal.invalid {
+  color: @syntax-highlighted;
+}
+.support {
+  color: @syntax-lowlighted;
+}
+.entity {
+  color: @syntax-common;
+}
+.markup {
+  color: @syntax-text;
+}
+
+/*
+  SPECIFICS
+____________________________________________________________________
+*/
+
+.modifier {
+  color: darken(@syntax-common,20%);
+}
+
+.control {
+  color: @syntax-lowlighted;
+  font-weight: 700;
+}
+
+.primitive {
+  color: @syntax-basic;
+  font-weight: 700;
+}
+
+.elements {
+  color: @syntax-text;
+}
+
+/* Methods */
+.method-call .method {
+  color: @syntax-common;
+  font-weight: 500;
+}
+.method-parameters {
+  color: @syntax-text;
+  font-weight: 100;
+}
+
+/*
+  JAVA
+____________________________________________________________________
+*/
+.java .entity,
+.java.entity {
+  text-decoration: underline;
+}
+
+.java .storage,
+.java.storage {
+  color: @syntax-text;
+}
+
+/*
+  CSS
+____________________________________________________________________
+*/
+
+.css .entity,
+.css.entity {
+  color: darken(@syntax-common,20%);
+}
+
+.css .constant,
+.css.constant {
+  color: @syntax-text;
+  &.numeric {
+    color: @syntax-significant;
+  }
+}
+
+
+
+
+/*
+  ADJUSTMENTS
+____________________________________________________________________
+*/
+
+.string {
+  .markup {
+    color: @syntax-unsignificant;
+  }
+}
+
+/* Imports */
+.import {
+  .keyword {
+    color: @syntax-unsignificant;
+  }
+  .option {
+    color: @syntax-text;
+  }
+  .string,
+  .string .markup,
+  .storage {
+    color: @syntax-highlighted;
+  }
+}
