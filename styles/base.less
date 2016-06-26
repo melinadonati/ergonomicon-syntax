@@ -223,35 +223,71 @@ ____________________________________________________________________
   font-weight: 100;
 }
 
+
+
+
 /*
   JAVA
 ____________________________________________________________________
 */
-.java .entity,
-.java.entity {
-  text-decoration: underline;
+.java {
+  .entity {
+    text-decoration: underline;
+  }
+  .storage  {
+    color: @syntax-text;
+  }
 }
 
-.java .storage,
-.java.storage {
-  color: @syntax-text;
-}
+
+
 
 /*
   CSS
 ____________________________________________________________________
 */
 
-.css .entity,
-.css.entity {
-  color: darken(@syntax-common,20%);
+.css {
+  .entity  {
+    color: darken(@syntax-common,20%);
+  }
+  .constant  {
+    color: @syntax-text;
+    &.numeric {
+      color: @syntax-significant;
+    }
+  }
 }
 
-.css .constant,
-.css.constant {
-  color: @syntax-text;
-  &.numeric {
-    color: @syntax-significant;
+
+
+
+/*
+  JSON
+____________________________________________________________________
+*/
+
+.json {
+  .punctuation {
+    font-weight: 700;
+
+    &.separator,
+    &.pair  {
+      color: @syntax-important !important;
+    }
+    &.key-value,
+    &.begin:not(.string),
+    &.end:not(.string)  {
+      color: darken(@syntax-common,20%) !important;
+    }
+  }
+  .string {
+    color: @syntax-text;
+    font-weight: 500;
+  }
+  .string +.value .string {
+    color: @syntax-lowlighted;
+    font-weight: 100;
   }
 }
 
