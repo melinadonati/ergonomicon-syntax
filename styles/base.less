@@ -186,9 +186,6 @@ ____________________________________________________________________
 .entity {
   color: @syntax-common;
 }
-.markup {
-  color: @syntax-text;
-}
 
 /*
   SPECIFICS
@@ -248,14 +245,64 @@ ____________________________________________________________________
 */
 
 .css {
+  .property-list {
+    &.end {
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px solid lighten(@syntax-background,3%);
+      }
+    }
+  }
+
+  .selector {
+    font-weight: 500;
+  }
+  .terminator {
+    color: @syntax-important !important;
+  }
+  .entity.pseudo-element {
+    color: @syntax-significant;
+  }
+  .entity.pseudo-class {
+    color: @syntax-uncommon;
+  }
+  .function {
+    color: darken(@syntax-basic,20%);
+    font-weight: 700;
+  }
+  .unit,
   .entity  {
     color: darken(@syntax-common,20%);
+  }
+  .tag {
+    color: @syntax-highlighted;
+  }
+  .attribute {
+    color: @syntax-text;
   }
   .constant  {
     color: @syntax-text;
     &.numeric {
-      color: @syntax-significant;
+      color: @syntax-common;
     }
+    &.font-name,
+    &.color {
+      color: lighten(@syntax-unsignificant,10%);
+    }
+    &.color {
+      font-weight: 100;
+    }
+  }
+  .unit {
+    font-variant: small-caps;
+  }
+  .wildcard, .id,
+  .important {
+    color: darken(@syntax-important,20%);
+    font-weight: 700;
   }
 }
 
@@ -291,8 +338,107 @@ ____________________________________________________________________
   }
 }
 
+/*
+  MARKUP
+____________________________________________________________________
+*/
 
+.markup {
+  font-weight: 100;
 
+  &.heading {
+    color: @syntax-lowlighted;
+    font-weight: 700;
+  }
+  &.heading-1 {
+    font-size: 125%;
+    line-height: 125%;
+  }
+  &.heading-2 {
+    font-size: 120%;
+    line-height: 120%;
+  }
+  &.heading-3 {
+    font-size: 115%;
+    line-height: 115%;
+  }
+  &.heading-4 {
+    font-size: 110%;
+    line-height: 110%;
+  }
+  &.heading-5 {
+    font-size: 105%;
+    line-height: 105%;
+  }
+  &.italic {
+    color: darken(@syntax-common,10%);
+    font-style: italic;
+  }
+  &.bold {
+    color: @syntax-common;
+    font-weight: 700;
+  }
+  &.underline {
+    text-decoration: underline;
+  }
+  &.strike {
+    color: @syntax-unsignificant;
+    text-decoration: line-through;
+  }
+  &.link {
+    color: @syntax-basic;
+  }
+  &.code > .support,
+  &.raw {
+    color: @syntax-highlighted;
+  }
+  &.raw {
+    background-color: darken(@dark, 5%);
+  }
+}
+
+.gfm {
+  &.mention + .string,
+  &.mention {
+    color: @syntax-significant;
+  }
+  &.list {
+    padding-right: 10px;
+    color: @syntax-lowlighted;
+    font-weight: 700;
+    font-size: 110%;
+    line-height: 110%;
+  }
+  &.table {
+    .border {
+      color: @syntax-unsignificant;
+    }
+  }
+  &.hr:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: @syntax-discreet;
+  }
+}
+
+.source.gfm {
+  & > .comment.quote {
+    padding-left: 35px;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 120%;
+    line-height: 120%;
+  }
+  & > .heading:after {
+    content: "";
+    display: block;
+    opacity: 0.1;
+    width: 50%;
+    height: 1px;
+    background-color: @syntax-lowlighted;
+  }
+}
 
 /*
   ADJUSTMENTS
