@@ -7,3 +7,6 @@
 * Full CSS support
 * Full JSON support
 * Full Markdown support
+
+## 0.1.2 - Alpha
+* HTML support

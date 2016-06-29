@@ -339,7 +339,7 @@ ____________________________________________________________________
 }
 
 /*
-  MARKUP
+  MARKDOWN
 ____________________________________________________________________
 */
 
@@ -437,6 +437,28 @@ ____________________________________________________________________
     width: 50%;
     height: 1px;
     background-color: @syntax-lowlighted;
+  }
+}
+/*
+  HTML
+____________________________________________________________________
+*/
+
+.html {
+  &.tag {
+    color: @syntax-lowlighted;
+  }
+  &.inline {
+    color: @syntax-basic;
+  }
+  &.id {
+    color: @syntax-significant;
+    &.attribute-name {
+      color: @syntax-uncommon;
+    }
+  }
+  &.comment {
+    color: @syntax-discreet;
   }
 }
 
