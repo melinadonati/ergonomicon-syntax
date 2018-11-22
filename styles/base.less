@@ -25,7 +25,7 @@ ____________________________________________________________________
   EDITOR
 ____________________________________________________________________
 */
-atom-text-editor, :host {
+atom-text-editor,  { //atom-text-editor
   font-family: @syntax-family;
   color: @syntax-text;
   background-color: @syntax-background;
@@ -38,22 +38,21 @@ atom-text-editor, :host {
   }
 }
 
-atom-text-editor[mini] .scroll-view,
-:host([mini]) .scroll-view {
+atom-text-editor[mini] .scroll-view,atom-text-editor .scroll-view {
   padding-left: 1px;
 }
 
 /* Active tab */
-.tab-bar .tab.active[data-type$="Editor"],
-.tab-bar .tab.active[data-type$="Editor"] .title,
-.tab-bar .tab.active[data-type="MarkdownPreviewView"],
-.tab-bar .tab.active[data-type="MarkdownPreviewView"] .title {
+.tab-bar .syntax--tab.active[data-type$="Editor"],
+.tab-bar .syntax--tab.active[data-type$="Editor"] .syntax--title,
+.tab-bar .syntax--tab.active[data-type="MarkdownPreviewView"],
+.tab-bar .syntax--tab.active[data-type="MarkdownPreviewView"] .syntax--title{
   color: @syntax-text !important;
   background-color: @syntax-background !important;
 }
 
-.tab-bar .tab.active[data-type$="Editor"]:after,
-.tab-bar .tab.active[data-type="MarkdownPreviewView"]:after {
+.tab-bar .syntax--tab.active[data-type$="Editor"]:after,
+.tab-bar .syntax--tab.active[data-type="MarkdownPreviewView"]:after {
   border-bottom-color: @syntax-background !important;
 }
 
@@ -71,8 +70,8 @@ atom-text-editor[mini] .scroll-view,
 ____________________________________________________________________
 */
 
-atom-text-editor, :host {
-  &::shadow .wrap-guide,
+atom-text-editor, {
+  & .wrap-guide,
   .wrap-guide {
     background-color: @guide-wrap;
   }
@@ -89,7 +88,7 @@ atom-text-editor, :host {
 ____________________________________________________________________
 */
 
-atom-text-editor, :host {
+atom-text-editor {
   .gutter {
     color: @gutter-text;
     background-color: @gutter-background;
@@ -116,15 +115,15 @@ atom-text-editor, :host {
 ____________________________________________________________________
 */
 
-atom-text-editor, :host {
+atom-text-editor {
   .selection .region {
     background-color: @syntax-selection;
   }
-  .search-results .marker {
+  .search-results .syntax--marker {
     .region {
       background-color: @syntax-selection;
     }
-    &.current-result .region {
+    &.syntax--current-result .region {
       color: @syntax-highlighted;
       border: 1px solid @syntax-highlighted;
     }
@@ -139,11 +138,11 @@ atom-text-editor {
   -webkit-font-feature-settings: "liga" on, "calt" on;
   text-rendering: optimizeLegibility;
 }
-atom-text-editor::shadow .string.quoted,
-atom-text-editor::shadow .string.regexp {
+atom-text-editor .syntax--string.syntax--quoted,
+atom-text-editor .syntax--string.syntax--regexp {
   -webkit-font-feature-settings: "liga" off, "calt" off;
 }
-.source.gfm .markup {
+.syntax--source.syntax--gfm .syntax--markup{
   -webkit-font-smoothing: auto;
 }
 
@@ -152,38 +151,38 @@ atom-text-editor::shadow .string.regexp {
 ____________________________________________________________________
 */
 
-.none {
+.syntax--none {
   color: @syntax-text;
 }
-.punctuation {
+.syntax--punctuation {
   color: inherit !important;
 }
-.comment {
+.syntax--comment {
   color: @syntax-discreet;
 }
-.keyword {
+.syntax--keyword {
   color: @syntax-important;
 }
-.constant {
+.syntax--constant {
   color: @syntax-significant;
 }
-.variable {
+.syntax--variable {
   color: @syntax-common;
 }
-.string {
+.syntax--string {
   color: @syntax-unsignificant;
   font-weight: 100;
 }
-.storage {
+.syntax--storage {
   color: @syntax-uncommon;
 }
-.illegal.invalid {
+.syntax--illegal.syntax--invalid {
   color: @syntax-highlighted;
 }
-.support {
+.syntax--support {
   color: @syntax-lowlighted;
 }
-.entity {
+.syntax--entity {
   color: @syntax-common;
 }
 
@@ -192,30 +191,30 @@ ____________________________________________________________________
 ____________________________________________________________________
 */
 
-.modifier {
+.syntax--modifier {
   color: darken(@syntax-common,20%);
 }
 
-.control {
+.syntax--control {
   color: @syntax-lowlighted;
   font-weight: 700;
 }
 
-.primitive {
+.syntax--primitive {
   color: @syntax-basic;
   font-weight: 700;
 }
 
-.elements {
+.syntax--elements {
   color: @syntax-text;
 }
 
 /* Methods */
-.method-call .method {
+.syntax--method-call .syntax--method {
   color: @syntax-common;
   font-weight: 500;
 }
-.method-parameters {
+.syntax--method-parameters {
   color: @syntax-text;
   font-weight: 100;
 }
@@ -227,11 +226,11 @@ ____________________________________________________________________
   JAVA
 ____________________________________________________________________
 */
-.java {
-  .entity {
+.syntax--java {
+  .syntax--entity {
     text-decoration: underline;
   }
-  .storage  {
+  .syntax--storage  {
     color: @syntax-text;
   }
 }
@@ -244,9 +243,9 @@ ____________________________________________________________________
 ____________________________________________________________________
 */
 
-.css {
-  .property-list {
-    &.end {
+.syntax--css {
+  .syntax--property-list {
+    &.syntax--end {
       &:after {
         content: "";
         display: block;
@@ -257,50 +256,50 @@ ____________________________________________________________________
     }
   }
 
-  .selector {
+  .syntax--selector {
     font-weight: 500;
   }
-  .terminator {
+  .syntax--terminator {
     color: @syntax-important !important;
   }
-  .entity.pseudo-element {
+  .syntax--entity.syntax--pseudo-element {
     color: @syntax-significant;
   }
-  .entity.pseudo-class {
+  .syntax--entity.syntax--pseudo-class {
     color: @syntax-uncommon;
   }
-  .function {
+  .syntax--function {
     color: darken(@syntax-basic,20%);
     font-weight: 700;
   }
-  .unit,
-  .entity  {
+  .syntax--unit,
+  .syntax--entity  {
     color: darken(@syntax-common,20%);
   }
-  .tag {
+  .syntax--tag {
     color: @syntax-highlighted;
   }
-  .attribute {
+  .syntax--attribute {
     color: @syntax-text;
   }
-  .constant  {
+  .syntax--constant  {
     color: @syntax-text;
-    &.numeric {
+    &.syntax--numeric {
       color: @syntax-common;
     }
-    &.font-name,
-    &.color {
+    &.syntax--font-name,
+    &.syntax--color {
       color: lighten(@syntax-unsignificant,10%);
     }
-    &.color {
+    &.syntax--color {
       font-weight: 100;
     }
   }
-  .unit {
+  .syntax--unit {
     font-variant: small-caps;
   }
-  .wildcard, .id,
-  .important {
+  .syntax--wildcard, .syntax--id,
+  .syntax--important {
     color: darken(@syntax-important,20%);
     font-weight: 700;
   }
@@ -314,25 +313,25 @@ ____________________________________________________________________
 ____________________________________________________________________
 */
 
-.json {
-  .punctuation {
+.syntax--json {
+  .syntax--punctuation {
     font-weight: 700;
 
-    &.separator,
-    &.pair  {
+    &.syntax--separator,
+    &.syntax--pair  {
       color: @syntax-important !important;
     }
-    &.key-value,
-    &.begin:not(.string),
-    &.end:not(.string)  {
+    &.syntax--key-value,
+    &.syntax--begin:not(.string),
+    &.syntax--end:not(.string)  {
       color: darken(@syntax-common,20%) !important;
     }
   }
-  .string {
+  .syntax--string {
     color: @syntax-text;
     font-weight: 500;
   }
-  .string +.value .string {
+  .syntax--string +.syntax--value .syntax--string {
     color: @syntax-lowlighted;
     font-weight: 100;
   }
@@ -343,78 +342,78 @@ ____________________________________________________________________
 ____________________________________________________________________
 */
 
-.markup {
+.syntax--markup {
   font-weight: 100;
 
-  &.heading {
+  &.syntax--heading {
     color: @syntax-lowlighted;
     font-weight: 700;
   }
-  &.heading-1 {
+  &.syntax--heading-1 {
     font-size: 125%;
     line-height: 125%;
   }
-  &.heading-2 {
+  &.syntax--heading-2 {
     font-size: 120%;
     line-height: 120%;
   }
-  &.heading-3 {
+  &.syntax--heading-3 {
     font-size: 115%;
     line-height: 115%;
   }
-  &.heading-4 {
+  &.syntax--heading-4 {
     font-size: 110%;
     line-height: 110%;
   }
-  &.heading-5 {
+  &.syntax--heading-5 {
     font-size: 105%;
     line-height: 105%;
   }
-  &.italic {
+  &.syntax--italic {
     color: darken(@syntax-common,10%);
     font-style: italic;
   }
-  &.bold {
+  &.syntax--bold {
     color: @syntax-common;
     font-weight: 700;
   }
-  &.underline {
+  &.syntax--underline {
     text-decoration: underline;
   }
-  &.strike {
+  &.syntax--strike {
     color: @syntax-unsignificant;
     text-decoration: line-through;
   }
-  &.link {
+  &.syntax--link {
     color: @syntax-basic;
   }
-  &.code > .support,
-  &.raw {
+  &.syntax--code > .syntax--support,
+  &.syntax--raw {
     color: @syntax-highlighted;
   }
-  &.raw {
+  &.syntax--raw {
     background-color: darken(@dark, 5%);
   }
 }
 
-.gfm {
-  &.mention + .string,
-  &.mention {
+.syntax--gfm {
+  &.syntax--mention + .syntax--string,
+  &.syntax--mention {
     color: @syntax-significant;
   }
-  &.list {
+  &.syntax--list {
     padding-right: 10px;
     color: @syntax-lowlighted;
     font-weight: 700;
     font-size: 110%;
     line-height: 110%;
   }
-  &.table {
-    .border {
+  &.syntax--table {
+    .syntax--border {
       color: @syntax-unsignificant;
     }
   }
-  &.hr:after {
+  &.syntax--hr:after {
     content: "";
     display: block;
     width: 100%;
@@ -423,14 +422,14 @@ ____________________________________________________________________
   }
 }
 
-.source.gfm {
-  & > .comment.quote {
+.syntax--source.syntax--gfm {
+  & > .syntax--comment.syntax--quote {
     padding-left: 35px;
     font-family: Verdana, Arial, sans-serif;
     font-size: 120%;
     line-height: 120%;
   }
-  & > .heading:after {
+  & > .syntax--heading:after {
     content: "";
     display: block;
     opacity: 0.1;
@@ -444,20 +443,20 @@ ____________________________________________________________________
 ____________________________________________________________________
 */
 
-.html {
-  &.tag {
+.syntax--html {
+  &.syntax--tag {
     color: @syntax-lowlighted;
   }
-  &.inline {
+  &.syntax--inline {
     color: @syntax-basic;
   }
-  &.id {
+  &.syntax--id {
     color: @syntax-significant;
-    &.attribute-name {
+    &.syntax--attribute-name {
       color: @syntax-uncommon;
     }
   }
-  &.comment {
+  &.syntax--comment {
     color: @syntax-discreet;
   }
 }
@@ -467,23 +466,23 @@ ____________________________________________________________________
 ____________________________________________________________________
 */
 
-.string {
-  .markup {
+.syntax--string {
+  .syntax--markup {
     color: @syntax-unsignificant;
   }
 }
 
 /* Imports */
-.import {
-  .keyword {
+.syntax--import {
+  .syntax--keyword {
     color: @syntax-unsignificant;
   }
-  .option {
+  .syntax--option {
     color: @syntax-text;
   }
-  .string,
-  .string .markup,
-  .storage {
+  .syntax--string,
+  .syntax--string .syntax--markup,
+  .syntax--storage {
     color: @syntax-highlighted;
   }
 }
